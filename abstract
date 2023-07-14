@@ -1,0 +1,132 @@
+//Bài 1
+<?php
+abstract class Shape {
+    abstract public function calculateArea();
+}
+class Circle extends Shape {
+    protected $radius;
+
+    public function __construct($radius)
+    {
+        $this->radius= $radius;
+    }
+    public function calculateArea()
+    {
+        return 3.14* pow($this->radius, 2);
+    }
+}
+class Rectangle extends Shape{
+    protected $width;
+    protected $height;
+
+    public function __construct($width, $height)
+    {
+        $this->width =$width;
+        $this->height= $height;
+    }
+    public function calculateArea()
+    {
+        return $this->width * $this->height;
+    }
+}
+$circle = new Circle (3);
+echo "Area of circle: " .$circle->calculateArea();
+$rectangle = new Rectangle (6,5);
+echo "Area of rectangle is: " .$rectangle->calculateArea();
+
+//Bài 2
+<?php
+abstract class Animal {
+    abstract public function makeSound();
+}
+class Dog extends Animal {
+    public function makeSound()
+    {
+        echo "Bark!";
+    }
+}
+class Cat extends Animal {
+    public function makeSound()
+    {
+        echo "Meow!";
+    }
+}
+$animals =[new Dog(), new Cat()];
+foreach ($animals as $animal)
+{
+    echo $animal->makeSound(). "<br> ";
+}
+
+//Bài 3
+<?php
+abstract class Employee {
+    protected $name;
+    protected $salary;
+    abstract public function getInformation();
+}
+class Manager extends Employee {
+   public function __construct($name, $salary)
+   {
+       $this->name =$name;
+       $this->salary= $salary;
+   }
+    public function getInformation()
+    {
+       return "Name Manager: " .$this->name .  "<br>Salary Manager: " .$this->salary;
+    }
+}
+class Staff extends Employee {
+    public function __construct($name, $salary)
+    {
+        $this->name =$name;
+        $this->salary= $salary;
+    }
+     public function getInformation()
+     {
+        return "<br>Name Staff: " .$this->name .  "<br>Salary Staff: " .$this->salary;
+     }
+ }
+$manager = new Manager ("Nguyen Ling", "5000$");
+echo $manager->getInformation();
+$staff = new Staff ("Nguyen Ling", "500$");
+echo $staff->getInformation();
+
+//Bài 4
+<?php
+abstract class Vehicle {
+    abstract public function start();
+}
+class Car extends Vehicle {
+    public function start()
+    {
+        return "Start Car!";
+    }
+}
+class Motorcycle extends Vehicle {
+    public function start()
+    {
+        return "Start Motorcycle!";
+    }
+}
+$vehicles = [new Car(), new Motorcycle()];
+foreach ($vehicles as $vehicle)
+{
+    echo $vehicle->start(). "<br>";
+}
+
+
+//Bài 5
+<?php
+abstract class Database{
+    abstract public function connect();
+    abstract public function query();
+    abstract public function disconnect();
+}
+class MySQLDatabase extends Database
+{
+
+}
+class PostgreSQLDatabase extends Database
+{
+    
+}
